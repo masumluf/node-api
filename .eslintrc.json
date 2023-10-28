@@ -11,6 +11,8 @@
     "rules": {
         "require-jsdoc": "off",
         "max-len": "off",
-        "new-cap": "off"
+        "new-cap": "off",
+        "object-curly-spacing": "off",
+        "object-curly-newline": "off"
     }
 }
