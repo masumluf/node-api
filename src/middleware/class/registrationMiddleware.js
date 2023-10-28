@@ -74,7 +74,7 @@ class RegistrationMiddleware extends RouteResponse {
       this.responseWithErrorClass(
           t.UNKNOWN_ERROR_MESSAGE,
           t.DEFAULT_SERVER_ERROR_CODE,
-          'PASSWORD',
+          'HashUserPassword',
       );
     }
   }
