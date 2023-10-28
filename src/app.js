@@ -3,7 +3,7 @@ import express, { json } from "express";
 import cors from "cors";
 import "dotenv/config";
 import router from "./routes/index.js";
-import { DBClass } from "./config/class/DB/index.js";
+import { DBClass } from "./config/class/dbdriver/index.js";
 const app = express();
 require("dotenv").config();
 
