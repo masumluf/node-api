@@ -25,4 +25,5 @@ export default {
   EMAIL_ADDRESS_VALIDATION_REGEX_STRING:
     /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   DEFAULT_DB_ERROR_MESSAGE: 'Database Service Error',
+  DEFAULT_PASSWORD_HASH_ROUND: 8,
 };
