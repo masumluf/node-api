@@ -1,6 +1,6 @@
-import { default as t } from "../../constants/index.js";
-import { RouteResponse } from "../index.js";
-import { DatabaseService } from "../../service/index.js";
+import {default as t} from '../../constants/index.js';
+import {RouteResponse} from '../index.js';
+import {DatabaseService} from '../../service/index.js';
 
 class RegistrationMiddleware extends RouteResponse {
   constructor() {
@@ -11,29 +11,31 @@ class RegistrationMiddleware extends RouteResponse {
   }
 
   async isValidEmailAddress(req, res, next) {
-    const { email } = req.body;
+    const {email} = req.body;
 
-    if (!email)
+    if (!email) {
       return this.responseWithError(
-        t.EMPTY_EMAIL_ERROR_MESSAGE,
-        t.DEFAULT_VALIDATION_ERROR_CODE,
-        res
+          t.EMPTY_EMAIL_ERROR_MESSAGE,
+          t.DEFAULT_VALIDATION_ERROR_CODE,
+          res,
       );
+    }
 
     const emailRegexString = t.EMAIL_ADDRESS_VALIDATION_REGEX_STRING;
 
-    if (!emailRegexString.test(email))
+    if (!emailRegexString.test(email)) {
       return this.responseWithError(
-        t.BAD_EMAIL_ERROR_MESSAGE,
-        t.DEFAULT_VALIDATION_ERROR_CODE,
-        res
+          t.BAD_EMAIL_ERROR_MESSAGE,
+          t.DEFAULT_VALIDATION_ERROR_CODE,
+          res,
       );
+    }
 
     if (await this.userService.findOneByEmail(email)) {
       return this.responseWithError(
-        t.DUPLICATE_EMAIL_ERROR_MESSAGE,
-        t.DEFAULT_ERROR_CODE,
-        res
+          t.DUPLICATE_EMAIL_ERROR_MESSAGE,
+          t.DEFAULT_ERROR_CODE,
+          res,
       );
     }
 
@@ -41,13 +43,13 @@ class RegistrationMiddleware extends RouteResponse {
   }
 
   async isUniqueUserName(req, res, next) {
-    const { username } = req.body;
+    const {username} = req.body;
     const user = await this.userService.findOneByUsername(username);
     if (user) {
       return this.responseWithError(
-        t.DUPLICATE_USERNAME_ERROR_MESSAGE,
-        t.DEFAULT_ERROR_CODE,
-        res
+          t.DUPLICATE_USERNAME_ERROR_MESSAGE,
+          t.DEFAULT_ERROR_CODE,
+          res,
       );
     }
     next();
