@@ -14,6 +14,7 @@ const registrationRoute = [
     middleware: [
       registrationMiddleware.isValidEmailAddress,
       registrationMiddleware.isUniqueUserName,
+      registrationMiddleware.checkPasswordEquality,
       registrationMiddleware.hashUserPassword,
     ],
     handler: async (req, res) => {

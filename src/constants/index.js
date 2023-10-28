@@ -29,4 +29,5 @@ export default {
   DEFAULT_DB_ERROR_MESSAGE: 'Database Service Error',
   DEFAULT_PASSWORD_HASH_ROUND: 8,
   REGISTRATION_SUCCESS_MESSAGE: 'Registration Successful',
+  DEFAULT_CONFIRM_PASSWORD_ERROR_MESSAGE: 'Password does not match',
 };
