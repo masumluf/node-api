@@ -9,6 +9,7 @@ class RegistrationMiddleware extends RouteResponse {
     this.isValidEmailAddress = this.isValidEmailAddress.bind(this);
     this.isUniqueUserName = this.isUniqueUserName.bind(this);
     this.hashUserPassword = this.hashUserPassword.bind(this);
+    this.checkPasswordEquality = this.checkPasswordEquality.bind(this);
     this.userService = new DatabaseService();
   }
 
@@ -54,6 +55,12 @@ class RegistrationMiddleware extends RouteResponse {
           res,
       );
     }
+    next();
+  }
+
+  checkPasswordEquality(req, res, next) {
+    const { password, confirmPassword } = req.body;
+    if (confirmPassword !== password) return this.responseWithError(t.DEFAULT_CONFIRM_PASSWORD_ERROR_MESSAGE, t.DEFAULT_VALIDATION_ERROR_CODE, res);
     next();
   }
 
