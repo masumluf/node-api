@@ -1,6 +1,6 @@
-import {default as t} from '../../constants/index.js';
-import {RouteResponse} from '../index.js';
-import {DatabaseService} from '../../service/index.js';
+import { default as t } from '../../constants/index.js';
+import { RouteResponse } from '../../utils/index.js';
+import { DatabaseService } from '../../service/index.js';
 
 class RegistrationMiddleware extends RouteResponse {
   constructor() {
@@ -11,7 +11,7 @@ class RegistrationMiddleware extends RouteResponse {
   }
 
   async isValidEmailAddress(req, res, next) {
-    const {email} = req.body;
+    const { email } = req.body;
 
     if (!email) {
       return this.responseWithError(
@@ -43,7 +43,7 @@ class RegistrationMiddleware extends RouteResponse {
   }
 
   async isUniqueUserName(req, res, next) {
-    const {username} = req.body;
+    const { username } = req.body;
     const user = await this.userService.findOneByUsername(username);
     if (user) {
       return this.responseWithError(

@@ -2,7 +2,7 @@
 // @ts-ignore
 import {RegistrationClass} from '../controller/index.js';
 
-import RegistrationMiddleware from '../utils/class/registrationMiddleware.js';
+import { RegistrationMiddleware } from '../middleware/index.js';
 
 const registrationController = new RegistrationClass();
 
@@ -12,7 +12,10 @@ const registrationRoute = [
   {
     http: 'post',
     path: '/signup',
-    middleware: [registrationMiddleware.isValidEmailAddress, registrationMiddleware.isUniqueUserName],
+    middleware: [
+      registrationMiddleware.isValidEmailAddress,
+      registrationMiddleware.isUniqueUserName,
+    ],
     handler: async (req, res) => {
       return registrationController.registrationHandler(req, res);
     },
