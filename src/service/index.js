@@ -1,1 +1,1 @@
-export { default as DatabaseService } from "./database/index.js";
+export {default as DatabaseService} from './database/index.js';
