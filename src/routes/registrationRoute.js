@@ -1,5 +1,4 @@
 // @ts-check
-// @ts-ignore
 import {RegistrationClass} from '../controller/index.js';
 
 import { RegistrationMiddleware } from '../middleware/index.js';

@@ -11,6 +11,8 @@ export default {
   CREDENTIAL_ERROR_CODE: 401,
   UNKNOWN_ERROR_MESSAGE: 'Unknown error occurred',
   UNKNOWN_ERROR_TYPE: 'UnknownError',
+  DEFAULT_RESOURCE_NOT_FOUND_MESSAGE: 'Sorry resource not found',
+  DEFAULT_CREDENTIAL_ERROR_MESSAGE: 'Invalid credentials',
   BAD_REQUEST: 'Bad Request',
   DEFAULT_MONGODB_URL: process.env.MONGODB_URL,
   EMPTY_EMAIL_ERROR_MESSAGE: 'Email Address required.',
@@ -26,4 +28,5 @@ export default {
     /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   DEFAULT_DB_ERROR_MESSAGE: 'Database Service Error',
   DEFAULT_PASSWORD_HASH_ROUND: 8,
+  REGISTRATION_SUCCESS_MESSAGE: 'Registration Successful',
 };
