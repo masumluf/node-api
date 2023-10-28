@@ -15,6 +15,7 @@ const registrationRoute = [
     middleware: [
       registrationMiddleware.isValidEmailAddress,
       registrationMiddleware.isUniqueUserName,
+      registrationMiddleware.hashUserPassword,
     ],
     handler: async (req, res) => {
       return registrationController.registrationHandler(req, res);

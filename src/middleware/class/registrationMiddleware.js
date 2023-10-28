@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { default as t } from '../../constants/index.js';
 import { RouteResponse } from '../../utils/index.js';
 import { DatabaseService } from '../../service/index.js';
@@ -7,6 +8,7 @@ class RegistrationMiddleware extends RouteResponse {
     super();
     this.isValidEmailAddress = this.isValidEmailAddress.bind(this);
     this.isUniqueUserName = this.isUniqueUserName.bind(this);
+    this.hashUserPassword = this.hashUserPassword.bind(this);
     this.userService = new DatabaseService();
   }
 
@@ -53,6 +55,28 @@ class RegistrationMiddleware extends RouteResponse {
       );
     }
     next();
+  }
+
+  async hashUserPassword(req, res, next) {
+    try {
+      if (req.body.password) {
+        const hashPassword = await bcrypt.hash(req.body.password, t.DEFAULT_PASSWORD_HASH_ROUND);
+        req.body.password = hashPassword;
+        next();
+      } else {
+        return this.responseWithError(
+            t.EMPTY_PASSWORD_ERROR_MESSAGE,
+            t.DEFAULT_VALIDATION_ERROR_CODE,
+            res,
+        );
+      }
+    } catch (error) {
+      this.responseWithErrorClass(
+          t.UNKNOWN_ERROR_MESSAGE,
+          t.DEFAULT_SERVER_ERROR_CODE,
+          'PASSWORD',
+      );
+    }
   }
 }
 

@@ -1,5 +1,6 @@
-import {RouteResponse} from '../../utils/index.js';
-import {DatabaseService} from '../../service/index.js';
+import { RouteResponse } from '../../utils/index.js';
+import { DatabaseService } from '../../service/index.js';
+import { default as t } from '../../constants';
 
 export class RegistrationClass {
   constructor() {
@@ -11,8 +12,7 @@ export class RegistrationClass {
       await userClassService.createUser(req.body);
       return this.routeResponse.responseWithData(res, req.body);
     } catch (error) {
-      console.log(error, 'error registration');
-      // return this.routeResponse.responseWithError();
+      return this.routeResponse.responseWithError(error.message, t.DEFAULT_SERVER_ERROR_CODE, res);
     }
   }
 }

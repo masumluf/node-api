@@ -8,7 +8,7 @@
     "build": "rimraf dist && babel src --out-dir dist  --copy-files",
     "start": "node dist/app.js",
     "start:dev": "nodemon --exec babel-node src/app.js",
-     "lint": "eslint ."
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "axios": "^1.5.1",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.17.2",
